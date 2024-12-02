@@ -21,7 +21,7 @@ export default function reducer(state = initialState, action) {
     } else if (action.type === 'INCREMENT_TO10'){
         return {...state, counter: state.counter + 10};
     } else if (action.type === 'DECREMENT_TO10'){
-        return {...state, counter: state.counter > 0 ? state.counter - 10 : 0};
+        return {...state, counter: state.counter - 10 < 0 ? 0 : state.counter - 10, };
     } else if ( action.type === 'RESET'){
         return {...state, counter: 0};
     }
