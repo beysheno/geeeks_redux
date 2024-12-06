@@ -1,23 +1,17 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
+import {withParamsAction} from "../../redux/actions";
 
 const ContactsPage = () => {
 const [input, setInput] = useState('');
 
     const dispatch = useDispatch();
-    const title = useSelector(state => state.contactsTitle)
+    const title = useSelector(state => state.contactsReducer.contactsTitle)
     const withParams = () =>{
-        dispatch({
-            type: "WITH_PARAMS",
-            payload: 'hello geeks'
-        })
+        dispatch(withParamsAction('hello geeks'))
     }
     const addTitle = () => {
-        dispatch({
-            type: 'FROM_INPUT',
-            payload: input
-        })
-        setInput('');
+        dispatch(withParamsAction(input))
     }
     return (
         <div>
